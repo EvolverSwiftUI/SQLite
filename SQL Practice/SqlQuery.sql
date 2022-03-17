@@ -45,6 +45,19 @@ ALTER TABLE player RENAME COLUMN jersey_num TO jer_num;
 */
 
 
+/*Quering to get data from TABLE*/
+
+CREATE TABLE 
+products(
+	name TEXT,
+	category TEXT,
+	price INT,
+	brand TEXT,
+	rating INT
+	);
+	
+PRAGMA TABLE_INFO(products);
+	
 
 
 

@@ -57,7 +57,15 @@ products(
 	);
 	
 PRAGMA TABLE_INFO(products);
-	
+
+SELECT *FROM products WHERE category = "Food";
+
+SELECT *FROM products WHERE category <> "Food";
+
+SELECT *FROM products WHERE  rating  > 4.0;
+
+SELECT *FROM products WHERE  price  < 2000;
+
 
 
 

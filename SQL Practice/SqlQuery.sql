@@ -78,6 +78,20 @@ SELECT *FROM products WHERE  name  LIKE "%Shirt%";
 SELECT *FROM products WHERE  name  LIKE "Shirt_";
 
 -- Get all Harry Potter books
+SELECT *FROM products WHERE  name  LIKE "Harry Potter%";
+
+SELECT *FROM products WHERE  category  LIKE "Gadgets";
+
+SELECT *FROM products WHERE  name  LIKE "Blue%";
+
+-- name ends with Cake
+SELECT *FROM products WHERE  name  LIKE "%Cake";
+
+-- name contains jeans
+SELECT *FROM products WHERE  name  LIKE "%jeans%";
+
+
+
 
 
 

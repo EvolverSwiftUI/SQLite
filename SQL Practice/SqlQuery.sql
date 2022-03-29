@@ -60,6 +60,7 @@ PRAGMA TABLE_INFO(products);
 
 SELECT * FROM products;
 
+-- Comparision Operators
 SELECT *FROM products WHERE category = "Food";
 
 SELECT *FROM products WHERE category <> "Food";
@@ -90,9 +91,102 @@ SELECT *FROM products WHERE  name  LIKE "%Cake";
 -- name contains jeans
 SELECT *FROM products WHERE  name  LIKE "%jeans%";
 
+-- Logical Operators
+--AND, OR, NOT
+
+-- query: 
+-- Find Products with 
+-- 1. belonging to Clothing category  and 
+-- 2. whose price is lessthan 1000
+
+SELECT *FROM products WHERE  category  LIKE "Clothing" AND price < 1000;
+
+----------------------------------------------	
+
+	SELECT 
+		*
+	FROM 
+		products 
+	WHERE  
+		rating > 4 
+		AND price <= 20 
+		AND brand LIKE "Britannia";
+	
+----------------------------------------------	
+	
+	SELECT 
+		*
+	FROM 
+		products 
+	WHERE  
+		 name  =  "Chocolate Cake"
+		OR name  =  "Strawberry Cake";
+		
+----------------------------------------------------------------------
+
+	SELECT
+		*
+	FROM
+		products
+	WHERE
+		brand = "Puma"
+		OR brand = "Nike"
+		OR brand = "Roadster";
 
 
+----------------------------------------------------------------------
 
+	SELECT
+		*
+	FROM
+		products
+	WHERE
+		NOT brand LIKE "Denim";
+
+
+----------------------------------------------------------------------
+
+-- QUERY
+-- Find all products
+-- 1. Redmi brand with rating > 4
+-- 2. or else brand is oneplus
+
+	SELECT
+		*
+	FROM	
+		products
+	WHERE
+		(brand = "Redmi" AND rating >= 4 )
+		OR brand = "OnePlus";	
+
+
+----------------------------------------------------------------------
+
+-- QUERY
+-- Find all products
+-- 1. category is clothing
+-- 2. and name does not contain  jeans
+
+	SELECT
+		*
+	FROM	
+		products
+	WHERE
+		category = "Clothing"
+		AND NOT name LIKE "%jeans%";	
+		
+----------------------------------------------------------------------
+
+	SELECT
+		*
+	FROM	
+		products
+	WHERE
+		(
+			brand = "Puma"
+			OR brand = "Denim"
+		)
+		AND NOT name LIKE "%shirt%";	
 
 
 

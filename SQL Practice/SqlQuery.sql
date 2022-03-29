@@ -58,13 +58,33 @@ products(
 	
 PRAGMA TABLE_INFO(products);
 
+SELECT * FROM products;
+
 SELECT *FROM products WHERE category = "Food";
 
 SELECT *FROM products WHERE category <> "Food";
 
 SELECT *FROM products WHERE  rating  > 4.0;
+SELECT *FROM products WHERE  rating  > =4.0;
 
 SELECT *FROM products WHERE  price  < 2000;
+SELECT *FROM products WHERE  price  <= 2000;
+
+-- String operations
+SELECT *FROM products WHERE  name  LIKE "Shirt%";
+SELECT *FROM products WHERE  name  LIKE "%Shirt";
+SELECT *FROM products WHERE  name  LIKE "%Shirt%";
+
+SELECT *FROM products WHERE  name  LIKE "Shirt_";
+
+-- Get all Harry Potter books
+
+
+
+
+
+
+
 
 
 

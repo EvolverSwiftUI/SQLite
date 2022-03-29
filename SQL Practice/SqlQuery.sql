@@ -188,7 +188,12 @@ SELECT *FROM products WHERE  category  LIKE "Clothing" AND price < 1000;
 		)
 		AND NOT name LIKE "%shirt%";	
 
+----------------------------------------------------------------------
+-- IN operator
 
+SELECT * 
+FROM products
+WHERE brand IN ("Puma", "Denim", "Levi's", "Roadster", "Nike");
 
 
 

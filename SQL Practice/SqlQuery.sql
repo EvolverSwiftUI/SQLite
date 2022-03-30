@@ -522,8 +522,8 @@ FROM
 GROUP BY 
 	name
 ORDER BY 
-		total_sixes DESC, 
-		total_fours DESC;
+	total_sixes DESC, 
+	total_fours DESC;
 	
 
 

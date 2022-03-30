@@ -527,10 +527,94 @@ ORDER BY
 	
 
 
+-------------------------------------------------------------------------------------------------
+-- Question:
+-- Retrieve top 10 players who played the most number of matches in a year
+
+	SELECT 
+		name, 
+		year, 
+		COUNT(*) AS total_matches 
+	FROM 
+		player_match_details
+	GROUP BY 
+		name, 
+		year 
+	ORDER BY 
+		total_matches DESC ;
+
+
+
+-------------------------------------------------------------------------------------------------
+-- Question:
+-- Calculate the average score of players for all the matches played from the year 2010 till 2014 and bottom 5 players in the average score
+
+SELECT
+	name, 
+	AVG(score) AS average_score 
+FROM 
+	player_match_details 
+WHERE 
+	year BETWEEN 2010 AND 2014
+GROUP BY 
+	name	 
+ORDER BY 
+	average_score ASC 
+LIMIT 5;
+
+-----------------------------------------------------------------------------------------
+-- HAVING Clause
+-- QUESTION
+-- Get all the players who scored more than 1 half-century
+
+SELECT 
+	name, 
+	COUNT() AS half_centuries
+FROM
+	player_match_details
+WHERE 
+	score >= 50
+GROUP BY 
+	name
+HAVING
+	half_centuries > 1;	
+	
+-------------------------------------------------------------------------------------------
+-- QUESTION:
+-- 1. Calculate	the average_score and total_score of each player for all matches played from 2010 till 2014
+-- 2. Retrieve players whose average score is less than 75 in ascending order of their total score
+
+SELECT 
+	name, 
+	SUM(score) AS total_score, 
+	AVG(score) AS average_score 
+FROM 
+	player_match_details 
+WHERE 
+	year BETWEEN 2010 AND 2014 
+GROUP BY 
+	name 
+HAVING 
+	average_score < 75 
+ORDER BY 
+	total_score ASC;
 
 
 
 
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------
+--	Where vs Having
+--	Where is used to filter rows vs Having is used to filter groups
+--	Performed before grouping vs Performed after grouping
 
 
 

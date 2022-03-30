@@ -195,6 +195,45 @@ SELECT *
 FROM products
 WHERE brand IN ("Puma", "Denim", "Levi's", "Roadster", "Nike");
 
+----------------------------------------------------------------------
+-- BETWEEN operator
+
+SELECT * 
+FROM products
+WHERE price BETWEEN 500 AND 2000;
+
+------------------------------------------------------------------------
+-- ORDER BY clause 
+-- QUERY:
+-- Get Products as the price in increasing order
+-- Get Products as the rating in decreasing order
+
+SELECT *
+FROM products
+ORDER BY price ASC;
+
+SELECT *
+FROM products
+ORDER BY rating DESC;
+
+SELECT *
+FROM products
+ORDER BY 
+price ASC, rating DESC;
+
+------------------------------------------------------------------
+-- LIMIT  and  OFFSET
+-- Get the details of top 5 highly rated products
+
+SELECT *
+FROM products
+ORDER BY rating DESC
+LIMIT 5
+OFFSET 0;
+
+
+
+
 
 
 

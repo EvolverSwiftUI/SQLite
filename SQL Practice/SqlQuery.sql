@@ -418,9 +418,97 @@ SELECT *FROM player_match_details;
 	FROM 
 		player_match_details;
 		
+------------------------------------------------------------------------------------------------
+-- GROUP BY clause
+
+-- Find the total scores of below players
+-- Viraj
+-- Stark
+-- Devid
+
+-- Generally we will do like below
+
+SELECT
+	SUM(score) AS total_score
+FROM
+	player_match_details
+WHERE
+--	name="Viraj";	
+-- 	name="David";
+	name="Stark";	
+	
+-- To handle this we required a special clause
+-- GROUP BY	
+-- Which can group the required ROWS
+-- perform aggregation each GROUP
+
+SELECT 
+	name, SUM(score) AS total_score
+FROM
+	player_match_details
+GROUP BY name;
+
+SELECT 
+	name, MIN(score) AS minimum_score
+FROM
+	player_match_details
+GROUP BY name;
+
+SELECT 
+	name, MAX(score) AS maximum_score
+FROM
+	player_match_details
+GROUP BY name;
+
+	
+SELECT 
+	name, AVG(score) AS average_score
+FROM
+	player_match_details
+GROUP BY name;
+	
+SELECT 
+	name, 
+	MAX(score) AS maximum_score,
+	MIN(score) AS minimum_score,
+	AVG(score) AS average_score,
+	SUM(score) AS total_score
+FROM
+	player_match_details
+GROUP BY 
+	name;
 
 
+-- Get year wise each player total scores
+SELECT
+	name, 
+	year,
+	SUM(score) AS total_score
+FROM
+	player_match_details
+GROUP BY 
+	name, 
+	year;	
+	
+	
+-- Get number of half centuries of each player scored in each year
 
+SELECT
+	name, year, COUNT(*) AS half_centuries_count
+FROM 
+	player_match_details 
+WHERE 
+	score >= 50
+GROUP BY
+	name, year;
+	
+-- Explaination on ABOVE query execution step wise
+-- first it will apply where clause to filter the required ROWS
+-- second it will apply the group clause to make all those rows into different gropus
+-- then in third it will calculate the aggegration function to get total number of rows had by each GROUP
+-- then finally it will show each layer name and g=hence each player half centuries on year wise basis
+
+	
 
 
 

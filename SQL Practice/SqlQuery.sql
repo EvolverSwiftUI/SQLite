@@ -600,17 +600,6 @@ ORDER BY
 	total_score ASC;
 
 
-
-
-
-
-
-
-
-
-
-
-
 ----------------------------------------------------------------------------------------------------------
 --	Where vs Having
 --	Where is used to filter rows vs Having is used to filter groups

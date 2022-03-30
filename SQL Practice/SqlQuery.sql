@@ -507,7 +507,23 @@ GROUP BY
 -- second it will apply the group clause to make all those rows into different gropus
 -- then in third it will calculate the aggegration function to get total number of rows had by each GROUP
 -- then finally it will show each layer name and g=hence each player half centuries on year wise basis
+-- where ------> group --------> aggregation function ------> final result
 
+-- Question:
+-- Calculate total number of sixes and fours scored by each player
+-- Result should be in desencing order of total number of sixes and fours
+
+SELECT
+	name, 
+	SUM(sixes) AS total_sixes, 
+	SUM(fours) AS total_fours
+FROM 
+	player_match_details
+GROUP BY 
+	name
+ORDER BY 
+		total_sixes DESC, 
+		total_fours DESC;
 	
 
 

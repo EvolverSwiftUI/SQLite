@@ -283,6 +283,143 @@ ALTER TABLE player_match_details RENAME COLUMN six to sixes;
 
 INSERT INTO player_match_details(name, match, score, fours, sixes, year) VALUES("Ram", "RR vs SRH", 62, 2, 7, 2011);
 
+SELECT *FROM player_match_details;
+
+-------------------------------------------------------------------------------------------------------------------------------
+-- Aggregations
+-- Sum, Avg, Max, Min, Count.............etc.
+
+-- QUERY
+-- Total Runs Scrored
+
+	SELECT 
+		SUM(score) 
+	FROM 
+		player_match_details;
+
+-- Get total scored by Lokesh
+-- It will work like this way
+-- 1. First it will filter rows using WHERE clause
+-- 2. Second it will apply the aggregation function SUM on score COLUMN
+ 
+	SELECT 
+		SUM(score) 
+	FROM 
+		player_match_details
+	WHERE
+		name="Lokesh";
+
+	SELECT 
+		AVG(score) 
+	FROM 
+		player_match_details
+	WHERE
+		name="Lokesh";
+		
+	SELECT 
+		MAX(score) 
+	FROM 
+		player_match_details
+	WHERE
+		name="Lokesh";
+		
+	SELECT 
+		MIN(score) 
+	FROM 
+		player_match_details
+	WHERE
+		name="Lokesh";
+		
+	SELECT 
+		COUNT(score) 
+	FROM 
+		player_match_details
+	WHERE
+		name="Lokesh";
+		
+		
+-- Total number of matches
+		
+	SELECT 
+		COUNT(*) 
+	FROM 
+		player_match_details;
+	
+-- calculate the total number of players in the DB.
+-- Approach
+-- 1. first get the distinct names of players meaning without duplicates.
+-- 2. then second apply the count on that distinct column
+
+	SELECT
+		 COUNT(DISTINCT name)
+	FROM
+		player_match_details;
+
+-- NOTE:
+-- NULL value
+-- by default null values are excluded when we use DISTINCT function on that COLUMN.
+
+
+-- COUNT variant functions
+	SELECT
+		COUNT(*)
+	FROM
+		player_match_details;
+ 
+ -- or else 
+ 	SELECT
+		COUNT(1)
+	FROM
+		player_match_details;
+
+ -- or else 
+ 	SELECT
+		COUNT()
+	FROM
+		player_match_details;
+		
+-- Using Multiple Aggregate Functions
+	SELECT
+		MAX(score), 
+		MIN(score), 
+		AVG(score), 
+		SUM(score)
+	FROM
+		player_match_details;
+		
+		
+	SELECT
+		MAX(score),
+		MIN(score), 
+		AVG(score),
+		SUM(score)
+	FROM
+		player_match_details
+	WHERE
+		name = "David";
+
+-----------------------------------------------------------------------------------------------------------
+-- Alias
+-- name to player_name
+
+	SELECT 
+		name AS player_name 
+	FROM 
+		player_match_details;
+
+
+	SELECT 
+		COUNT(DISTINCT name)  AS unique_players_count
+	FROM 
+		player_match_details;
+
+	SELECT 
+		SUM(score)  AS total_score
+	FROM 
+		player_match_details;
+		
+
+
 
 
 

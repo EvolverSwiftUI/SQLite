@@ -278,7 +278,10 @@ SELECT DISTINCT category, brand
 FROM products
 ORDER BY category;
 
+CREATE TABLE player_match_details(name TEXT, match TEXT,  score INTEGER, fours INTEGER, six INTEGER, year INTEGER);
+ALTER TABLE player_match_details RENAME COLUMN six to sixes;
 
+INSERT INTO player_match_details(name, match, score, fours, sixes, year) VALUES("Ram", "RR vs SRH", 62, 2, 7, 2011);
 
 
 

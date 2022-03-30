@@ -231,6 +231,55 @@ ORDER BY rating DESC
 LIMIT 5
 OFFSET 0;
 
+SELECT *
+FROM products
+ORDER BY rating DESC
+LIMIT 5;
+
+
+-- Now lets fetch next 5 highly rated products
+
+SELECT *
+FROM products
+ORDER BY rating DESC
+LIMIT 5
+OFFSET 5;
+
+SELECT *
+FROM products
+ORDER BY rating DESC
+LIMIT 50;
+
+-- NOTE:
+-- always LIMIT clause comes first then only OFFSET clause comes next.
+-- otherwise we will get error of syntax
+
+---------------------------------------------------------------------------------
+-- DISTINCT results
+
+SELECT brand
+FROM products
+ORDER BY brand;
+
+-- here in above query we are getting brands as duplicates
+-- but we want only unique or distinct brands
+
+-- so we can achieve this by using DISTINCT clause
+
+SELECT DISTINCT brand
+FROM products
+ORDER BY brand;
+
+-- distinct in multiple columns
+-- in each category, get unique brands.
+-- meaning we will get unique in the way of category and brand pairs.
+
+SELECT DISTINCT category, brand
+FROM products
+ORDER BY category;
+
+
+
 
 
 

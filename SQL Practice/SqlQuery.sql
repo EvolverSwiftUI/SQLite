@@ -736,6 +736,14 @@ UNION ALL
 SELECT actor_id FROM cast WHERE movie_id = 15; 
 
 
+--------------------------------------------------------------------------------------------
+-- Modeling databases
+-- Understand business requirements as conceptual level
+-- Then translate them to a relational database.
+
+
+
+
 
 
 

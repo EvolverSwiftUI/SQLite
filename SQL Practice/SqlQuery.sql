@@ -609,7 +609,7 @@ ORDER BY
 --------------------------------------------------------------------------------------------------
 -- Common Concepts
 
-CREATE TABLE movie(id INTEGER, name TEXT, genre TEXT, budget_in_cr INTEGER, collection_in_cr INTEGER, rating INTEGER, release_date INTEGER)
+CREATE TABLE movie(id INTEGER, name TEXT, genre TEXT, budget_in_cr INTEGER, collection_in_cr INTEGER, rating INTEGER, release_date datetime)
 
 
 CREATE TABLE actor(actor_id INTEGER, name TEXT, age INTEGER);
@@ -637,7 +637,108 @@ SELECT id, name, collection_in_cr-budget_in_cr AS profit FROM movie;
 
 ---------------------------------------------------------------
 -- SQL Functions
---
+-- Question
+-- Get number of movies released in each month of year 2010
+
+SELECT 
+	strftime("%m", release_date) AS month, 
+	COUNT(*) AS total_movies 
+FROM 
+	movie 
+WHERE 
+	strftime("%Y", release_date) = '2010' 
+GROUP BY 
+	strftime("%m", release_date);
+
+
+-- or else 
+-- CAST usage
+
+SELECT 
+	strftime("%m", release_date) AS month, 
+	COUNT(*) AS total_movies 
+FROM 
+	movie 
+WHERE 
+	CAST(strftime("%Y", release_date) AS INTEGER) = 2010
+GROUP BY 
+	strftime("%m", release_date);
+	
+-- SQL different Functions
+-- CAST ------> used to type cast
+-- UPPER -----> 	Converts a string to upper case
+-- LOWER -----> Converts a string to lower case
+-- FLOOR ----> Rounds a number to the nearest integer below its current value
+-- CEIL -----> Rounds a number to the nearest integer above its current value
+-- ROUND -----> Rounds a number to a specified number of decimal places
+
+
+
+------------------------------------------------------------------------------------------------------------
+-- CASE clause
+
+-- Question
+-- Calculate tax amount for all the movies 
+-- Tax amount depends on the profit as mentioned below
+
+-- PROFIT  -  TAX
+-- < 100 crores - 10% of profit
+-- 100 to 500 crores - 15% of profit
+-- > 500 crores - 18% of profit
+
+
+-- we can use case statenents for conditions in QUERY
+
+SELECT 
+	id, 
+	name, 
+	(collection_in_cr - budget_in_cr) AS profit,
+	CASE
+		WHEN collection_in_cr - budget_in_cr <= 100 THEN (collection_in_cr - budget_in_cr) * 0.1
+		WHEN collection_in_cr - budget_in_cr <= 500 THEN (collection_in_cr - budget_in_cr) * 0.15
+		ELSE  (collection_in_cr - budget_in_cr) * 0.18
+	END AS tax_amount
+FROM
+		movie;
+
+		
+-- we can use CASE in different clauses as well
+
+
+-------------------------------------------------------------------------------------------------
+-- SQL SET OPERATORS
+
+-- Set Operators we can use to combine results of two or more SQL queries
+-- common set operations
+-- 1. INTERSECT
+-- 2. MINUS
+-- 3. UNION
+-- 4. UNION ALL
+
+-- 1. INTERSECT
+SELECT actor_id FROM cast WHERE movie_id = 6
+INTERSECT 
+SELECT actor_id FROM cast WHERE movie_id = 15; 
+
+-- 2. MINUS
+SELECT actor_id FROM cast WHERE movie_id = 6
+EXCEPT
+SELECT actor_id FROM cast WHERE movie_id = 15; 
+
+-- 3. UNION
+SELECT actor_id FROM cast WHERE movie_id = 6
+UNION 
+SELECT actor_id FROM cast WHERE movie_id = 15; 
+
+-- 4. UNION ALL
+SELECT actor_id FROM cast WHERE movie_id = 6
+UNION ALL
+SELECT actor_id FROM cast WHERE movie_id = 15; 
+
+
+
+
+
 
 
 

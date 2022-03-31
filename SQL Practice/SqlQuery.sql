@@ -606,5 +606,47 @@ ORDER BY
 --	Performed before grouping vs Performed after grouping
 
 
+--------------------------------------------------------------------------------------------------
+-- Common Concepts
+
+CREATE TABLE movie(id INTEGER, name TEXT, genre TEXT, budget_in_cr INTEGER, collection_in_cr INTEGER, rating INTEGER, release_date INTEGER)
+
+
+CREATE TABLE actor(actor_id INTEGER, name TEXT, age INTEGER);
+
+
+CREATE TABLE cast(actor_id INTEGER, movie_id INTEGER, role TEXT);
+
+-----------------------------------------------------------
+-- Expression in querying
+-- Question
+-- Get movies that made a profit of at least 500 crores
+
+SELECT * FROM movie WHERE (collection_in_cr - budget_in_cr) >= 500;
+
+-- Question
+-- Scale down ratinhgs to 5 instaed of 10
+
+UPDATE  movie SET rating = rating/2;
+
+SELECT * FROM movie;
+
+UPDATE  movie SET rating = rating*2;
+
+SELECT id, name, collection_in_cr-budget_in_cr AS profit FROM movie;
+
+---------------------------------------------------------------
+-- SQL Functions
+--
+
+
+
+
+
+
+
+
+
+
 
 

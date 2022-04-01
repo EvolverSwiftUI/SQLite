@@ -124,5 +124,51 @@
 	SELECT *FROM cart_product;
 
 		
+-------------------------------------------------------------------
+-- QUERYING
+
+-- One to Many Relationship
+-- Question
+-- Get all addresses of John?
+
+	SELECT 
+		* 
+	FROM 
+		customer
+		JOIN address ON customer.id = address.customer_id
+	WHERE 
+		customer. name = "John";
+	
+-- One to One Relationship	
+-- QUESTION
+-- Get cart details of customer John?
+
+	SELECT 
+		* 
+	FROM
+		customer
+		JOIN cart ON customer.id = cart.customer_id
+	WHERE
+		customer.name = "John";
+		
+
+-- Many to Many Relationship	
+-- QUESTION
+-- Get all the products in a customers cart(customer_id = 1) ?
+
+	SELECT 
+		*
+	FROM
+		cart
+		JOIN cart_product ON cart.id = cart_product.cart_id
+		JOIN product ON product.id = cart_product.product_id
+	WHERE
+		cart.customer_id = 1;
+		
+
+
+
+
+
 
 

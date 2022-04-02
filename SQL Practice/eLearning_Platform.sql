@@ -103,12 +103,26 @@ FROM
 -- Question
 -- Get reviews of course "Cyber Security" (course with id = 15)
 SELECT 
-	* 
+	student.full_name,
+	reviews.content,
+	reviews.created_at
 FROM 
 	student 
 	INNER JOIN reviews ON student.id = reviews.student_id
 WHERE reviews.course_id = 15;
 
+-- LEFT JOIN
+
+SELECT * FROM student LEFT JOIN student_course ON student.id = student_course.student_id;
+
+SELECT 	
+	student.full_name 
+ FROM 
+	student 
+	LEFT JOIN student_course ON student.id = student_course.student_id
+WHERE student_course.id IS NULL;
+
+-- RIGHT JOIN
 		
 		
 		

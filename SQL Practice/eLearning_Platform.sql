@@ -187,7 +187,16 @@ LIMIT
 	
 	
 -- QUESTION 02
--- 
+-- Get the number of students in each course and the respective instructor id for that course
+
+	SELECT
+		course.name, 
+		course.instructor_id,
+		COUNT(student_course.student_id) AS total_students_count
+	FROM
+		course 
+		LEFT JOIN student_course ON course.id = student_course.course_id
+	GROUP BY course.id;
 
 
 

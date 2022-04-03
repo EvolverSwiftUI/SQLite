@@ -197,8 +197,28 @@ LIMIT
 		course 
 		LEFT JOIN student_course ON course.id = student_course.course_id
 	GROUP BY course.id;
+	
+-- Question 03
+-- Get students who registered for atleast one course
+	
+	SELECT 
+		DISTINCT(student.full_name) AS full_name
+	FROM
+		student_course 
+		JOIN student ON student_course.student_id = student.id;		
+	
 
+-- Question 04
+-- Get instructor who is not teaching any course
 
+	SELECT
+		instructor.full_name
+	FROM
+		instructor 
+		LEFT JOIN course 
+		ON course.instructor_id = instructor.instructor_id
+	WHERE
+		course.id IS NULL;
 
 	
 

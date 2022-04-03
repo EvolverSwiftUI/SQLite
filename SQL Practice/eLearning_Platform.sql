@@ -219,6 +219,22 @@ LIMIT
 		ON course.instructor_id = instructor.instructor_id
 	WHERE
 		course.id IS NULL;
+		
+-- SELF JOIN -- meaning inner join on same table
+-- Question
+-- Get student pairs who enrolled for same course?
+
+	SELECT
+		sc1.student_id AS s1,
+		sc2.student_id AS s2,
+		sc1.course_id,
+		COUNT() AS number_of_courses	
+	FROM
+		student_course AS sc1
+		JOIN student_course AS sc2
+		ON sc1.course_id = sc2.course_id
+	WHERE
+		sc1.student_id < sc2.student_id;
 
 	
 

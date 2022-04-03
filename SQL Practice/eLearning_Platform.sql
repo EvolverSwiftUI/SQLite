@@ -122,7 +122,79 @@ SELECT
 	LEFT JOIN student_course ON student.id = student_course.student_id
 WHERE student_course.id IS NULL;
 
--- RIGHT JOIN
+--QUESTION
+-- Get the scores of student who enrolled in the course of machine learning (course id = 11)
+
+SELECT 
+	student.full_name,
+	student_course.score
+FROM
+	student
+	INNER JOIN student_course ON student.id = student_course.student_id
+WHERE student_course.course_id = 11;	
+
+--QUESTION
+-- JOINS on multiple tables
+-- Fetch all the students who enrolled for the courses taught by the instructor Arun (id = 102)
+
+	SELECT
+		T.name AS course_name,
+		student.full_name
+	FROM
+		(course INNER JOIN student_course ON course.id = student_course.course_id) AS T
+		INNER JOIN student ON T.student_id = student.id
+	WHERE
+		course.instructor_id = 102;
+
+--QUESTION
+-- JOINS with other clauses
+-- Get the name of student who scored highest in "Machine Learning" course
+
+SELECT 
+	student.full_name
+FROM
+	(student INNER JOIN student_course ON student.id = student_course.student_id) AS T 
+	INNER JOIN course ON T.course_id = course.id 
+WHERE 
+	course.name = "Machine Learning" 
+ORDER BY 
+	student_course.score DESC
+LIMIT 
+	1;
+	
+	
+-- Query Walkthrough
+-- Question 01
+-- Get all courses that the student with id 1 has enrolled and the respective scores in each course
+
+
+	SELECT 
+		course.name,
+		student_course.score
+	FROM
+		(student INNER JOIN student_course ON student.id = student_course.id)  AS T
+		INNER JOIN course ON course.id = T.course_id 
+	WHERE student.id = 1;	
+	
+	-- or
+	
+	SELECT
+		course.name,
+		student_course.score
+	FROM
+		course INNER JOIN student_course ON course.id = student_course.course_id
+	WHERE 	student_course.student_id = 1;
+	
+	
+-- QUESTION 02
+-- 
+
+
+
+	
+
+	
+
 		
 		
 		

@@ -60,7 +60,38 @@
 	SELECT 
 		*
 	FROM 
-		user_base_details;	
+		user_base_details;
+		
+-- other clauses in view
+
+	SELECT 
+		*
+	FROM
+		user_base_details
+	WHERE 
+		gender = "Male"
+	ORDER BY age ASC;
+	
+-- Advantages:
+-- 1. Provide specific access
+-- 2. Writing simple queries
+
+	CREATE VIEW order_with_product AS
+	SELECT
+		*
+	FROM
+		order_product 
+		JOIN product
+		ON order_product.product_id = product.product_id;
+		
+	SELECT 
+		name, no_of_units
+	FROM 
+		order_with_product
+	WHERE
+		order_id = 665;
+		
+			
 
 
 		

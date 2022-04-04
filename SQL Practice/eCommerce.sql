@@ -91,6 +91,34 @@
 	WHERE
 		order_id = 665;
 		
+-- NOTE:
+-- In general, VIEWs are read only
+-- We cannot perform write operations like updating, deleting and inserting rows in the base table through VIEWs
+
+-- Get list of all available VIEWs in SQLite
+
+	SELECT
+		name
+	FROM	
+		sqlite_master
+	WHERE
+		TYPE = "view";
+		
+-- DELETE VIEW
+
+	DROP VIEW user_base_details;
+		
+---------------------------------------------------------------------------------------------------------------------------
+		
+-- Sub Queries
+-- QUESTION
+-- Get the rating variance of products in the watch category
+
+
+
+
+		
+		
 			
 
 

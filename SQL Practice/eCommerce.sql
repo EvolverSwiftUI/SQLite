@@ -45,7 +45,22 @@
 -- Data insertion done manually		
 
 -----------------------------------------------------
--- QUERYING
+-- VIEW
+
+	CREATE VIEW user_base_details AS
+	SELECT 
+		id,
+		name,
+		age,
+		gender,
+		pincode
+	FROM
+		user;	
+	
+	SELECT 
+		*
+	FROM 
+		user_base_details;	
 
 
 		

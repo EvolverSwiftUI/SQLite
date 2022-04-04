@@ -110,10 +110,40 @@
 		
 ---------------------------------------------------------------------------------------------------------------------------
 		
--- Sub Queries
+-- Sub Queries or Inner Queries or Nested Queries
 -- QUESTION
 -- Get the rating variance of products in the watch category
 
+-- NOTE:
+-- rating variance is difference BETWEEN average rating and rating
+
+	SELECT
+		name,
+		(
+			SELECT 
+				AVG(rating)
+			FROM
+				product
+			WHERE
+				category = "WATCH"
+		) - rating AS rating_variance
+	FROM
+		product
+	WHERE
+		category = "WATCH";
+		
+-- Question
+-- Get products whose rating is grater than average rating of all products
+
+	SELECT
+		*
+	FROM
+		product
+	WHERE
+		rating > (
+			SELECT AVG(rating)
+			FROM product
+		);
 
 
 
